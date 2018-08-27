@@ -11,14 +11,22 @@ public class KafkaProducerApp {
 
         Properties props = new Properties();
 
-        props.put("bootstrap.servers", "Broker-1:9090, Broker-2:9091");
+        props.put("bootstrap.servers", "localhost:9093, localhost:9094, localhost:9095");
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
-        KafkaProducer producer = new KafkaProducer(props);
-
-        ProducerRecord myMessage = new ProducerRecord("my_topic", "My message 1");
+        KafkaProducer<String,String> producer = new KafkaProducer<String,String>(props);
 
 
+        try {
+            for (int i = 0; i < 150; i++) {
+
+                producer.send(new ProducerRecord<String, String>("kaafka-distributed", Integer.toString(i), "My message: " + Integer.toString(i)));
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            producer.close();
+        }
     }
 }
