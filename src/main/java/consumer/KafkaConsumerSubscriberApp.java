@@ -13,7 +13,7 @@ public class KafkaConsumerSubscriberApp {
 
         Properties props = new Properties();
 
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", "localhost:9094");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("group.id", "test");
@@ -22,8 +22,8 @@ public class KafkaConsumerSubscriberApp {
 
         ArrayList<String> topics = new ArrayList<String>();
 
-        topics.add("test-consumer");
-        topics.add("test-consumer-1");
+        topics.add("apache-kafka-1");
+        topics.add("apache-kafka-2");
 
         consumer.subscribe(topics);
 

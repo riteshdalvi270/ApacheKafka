@@ -15,7 +15,7 @@ public class KafkaConsumerAssignApp {
 
         Properties props = new Properties();
 
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", "localhost:9094");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         //props.put("group.id", "test");
@@ -24,8 +24,8 @@ public class KafkaConsumerAssignApp {
 
         List<TopicPartition> partition = new ArrayList<TopicPartition>();
 
-        TopicPartition partition1Topic0 = new TopicPartition("test-consumer",1);
-        TopicPartition partition2Topic1 = new TopicPartition("test-consumer-1",2);
+        TopicPartition partition1Topic0 = new TopicPartition("apache-kafka-1",1);
+        TopicPartition partition2Topic1 = new TopicPartition("apache-kafka-2",2);
 
         partition.add(partition1Topic0);
         partition.add(partition2Topic1);
